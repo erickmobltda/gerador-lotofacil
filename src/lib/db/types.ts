@@ -14,72 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      cards: {
-        Row: {
-          artist: string | null
-          condition: Database["public"]["Enums"]["card_condition"]
-          created_at: string
-          external_id: string | null
-          hp: string | null
-          id: string
-          image_url: string | null
-          name: string
-          notes: string | null
-          number: string | null
-          quantity: number
-          rarity: string | null
-          set_id: string | null
-          set_name: string | null
-          subtypes: string[] | null
-          supertype: string | null
-          types: string[] | null
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          artist?: string | null
-          condition?: Database["public"]["Enums"]["card_condition"]
-          created_at?: string
-          external_id?: string | null
-          hp?: string | null
-          id?: string
-          image_url?: string | null
-          name: string
-          notes?: string | null
-          number?: string | null
-          quantity?: number
-          rarity?: string | null
-          set_id?: string | null
-          set_name?: string | null
-          subtypes?: string[] | null
-          supertype?: string | null
-          types?: string[] | null
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          artist?: string | null
-          condition?: Database["public"]["Enums"]["card_condition"]
-          created_at?: string
-          external_id?: string | null
-          hp?: string | null
-          id?: string
-          image_url?: string | null
-          name?: string
-          notes?: string | null
-          number?: string | null
-          quantity?: number
-          rarity?: string | null
-          set_id?: string | null
-          set_name?: string | null
-          subtypes?: string[] | null
-          supertype?: string | null
-          types?: string[] | null
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
       invitations: {
         Row: {
           created_at: string
@@ -139,73 +73,34 @@ export type Database = {
       }
       profiles: {
         Row: {
-          avatar_url: string | null
           ban_reason: string | null
           banned: boolean
           created_at: string
           email: string
           id: string
-          is_collection_public: boolean
           name: string | null
           role: Database["public"]["Enums"]["user_role"]
           updated_at: string
-          username: string | null
         }
         Insert: {
-          avatar_url?: string | null
           ban_reason?: string | null
           banned?: boolean
           created_at?: string
           email: string
           id: string
-          is_collection_public?: boolean
           name?: string | null
           role?: Database["public"]["Enums"]["user_role"]
           updated_at?: string
-          username?: string | null
         }
         Update: {
-          avatar_url?: string | null
           ban_reason?: string | null
           banned?: boolean
           created_at?: string
           email?: string
           id?: string
-          is_collection_public?: boolean
           name?: string | null
           role?: Database["public"]["Enums"]["user_role"]
           updated_at?: string
-          username?: string | null
-        }
-        Relationships: []
-      }
-      projects: {
-        Row: {
-          color: string
-          created_at: string
-          description: string | null
-          id: string
-          name: string
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          color?: string
-          created_at?: string
-          description?: string | null
-          id?: string
-          name: string
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          color?: string
-          created_at?: string
-          description?: string | null
-          id?: string
-          name?: string
-          updated_at?: string
-          user_id?: string
         }
         Relationships: []
       }
@@ -278,56 +173,6 @@ export type Database = {
         }
         Relationships: []
       }
-      tasks: {
-        Row: {
-          completed_at: string | null
-          created_at: string
-          deadline: string | null
-          description: string | null
-          id: string
-          priority: Database["public"]["Enums"]["task_priority"]
-          project_id: string
-          status: Database["public"]["Enums"]["task_status"]
-          title: string
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          completed_at?: string | null
-          created_at?: string
-          deadline?: string | null
-          description?: string | null
-          id?: string
-          priority?: Database["public"]["Enums"]["task_priority"]
-          project_id: string
-          status?: Database["public"]["Enums"]["task_status"]
-          title: string
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          completed_at?: string | null
-          created_at?: string
-          deadline?: string | null
-          description?: string | null
-          id?: string
-          priority?: Database["public"]["Enums"]["task_priority"]
-          project_id?: string
-          status?: Database["public"]["Enums"]["task_status"]
-          title?: string
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "tasks_project_id_fkey"
-            columns: ["project_id"]
-            isOneToOne: false
-            referencedRelation: "projects"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       user_settings: {
         Row: {
           created_at: string
@@ -372,15 +217,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      card_condition:
-        | "Near Mint"
-        | "Lightly Played"
-        | "Moderately Played"
-        | "Heavily Played"
-        | "Damaged"
       invitation_status: "pending" | "used" | "expired"
-      task_priority: "low" | "medium" | "high"
-      task_status: "todo" | "in_progress" | "done"
       user_role: "owner" | "admin" | "user"
     }
     CompositeTypes: {
@@ -509,16 +346,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      card_condition: [
-        "Near Mint",
-        "Lightly Played",
-        "Moderately Played",
-        "Heavily Played",
-        "Damaged",
-      ],
       invitation_status: ["pending", "used", "expired"],
-      task_priority: ["low", "medium", "high"],
-      task_status: ["todo", "in_progress", "done"],
       user_role: ["owner", "admin", "user"],
     },
   },
